@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Lista } from 'src/app/models/lista';
 import { UuidGeneratorService } from '../uuid-generator';
-import { Firestore, collection, collectionData, setDoc, doc, getDocs, deleteDoc } from '@angular/fire/firestore';
+import { Firestore, collection, collectionData, setDoc, doc, getDocs, deleteDoc, updateDoc } from '@angular/fire/firestore';
 import { map } from 'rxjs'
 import { mapToCanActivate } from '@angular/router';
 import firebaseconfig from 'src/firebaseconfig';
@@ -37,6 +37,19 @@ export class ListaService {
     const db = collection(this.firestore, this.localStorageKey)
     return setDoc(doc(db, lista.id), JSON.parse(JSON.stringify(lista)));
   }
+
+  //https://firebase.google.com/docs/firestore/manage-data/add-data?hl=pt-br#web-modular-api_4
+  private _atualizaFirestore(lista: lista) {
+    const db = doc(collection(this.firestore, this.localStorageKey), lista.id);
+
+    await updateDoc(db,  lista.id)
+    {
+      await updateDoc(lista, {
+        "quantity": 1
+    });
+    }
+  }
+
 
   save(lista: Lista) {
     const model = new Lista(lista);
