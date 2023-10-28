@@ -23,11 +23,14 @@
                             {{ lista.quantity }} vezes
                         </mat-card-content>
                         <mat-card-actions align="end">
-                            <button mat-icon-button color="warn" (click)="abrirDialogoDeConfirmacao(lista)">
-                                <mat-icon>delete</mat-icon>
+                            <button mat-icon-button >
+                                <mat-icon>add_shopping_cart</mat-icon>
                             </button>
                             <button mat-icon-button (click)="abrirLista(lista)">
                                 <mat-icon>edit</mat-icon>
+                            </button>
+                            <button mat-icon-button color="warn" (click)="abrirDialogoDeConfirmacao(lista)">
+                                <mat-icon>delete</mat-icon>
                             </button>
                         </mat-card-actions>
                     </mat-card>

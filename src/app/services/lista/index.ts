@@ -39,15 +39,12 @@ export class ListaService {
   }
 
   //https://firebase.google.com/docs/firestore/manage-data/add-data?hl=pt-br#web-modular-api_4
-  private _atualizaFirestore(lista: lista) {
+  private _atualizaFirestore(lista: Lista) {
     const db = doc(collection(this.firestore, this.localStorageKey), lista.id);
 
-    await updateDoc(db,  lista.id)
-    {
-      await updateDoc(lista, {
-        "quantity": 1
-    });
-    }
+    updateDoc(db, {
+      "quantity" : 10
+    })
   }
 
 

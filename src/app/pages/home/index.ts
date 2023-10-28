@@ -47,6 +47,9 @@ export class HomeComponent {
   adicionarLista() {
     this._openDialog({});
   }
+  atualizarLista() {
+    
+  }
 
   abrirDialogoDeConfirmacao(lista: Lista): void {
     const dialogRef = this.dialog.open(ConfirmDialogComponent);
